@@ -6,7 +6,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +19,17 @@ public class MainActivity extends AppCompatActivity {
     private List<Book> bookList = new ArrayList<>();
     private RecyclerView recyclerView;
     private BookAdapter mAdapter;
+    private ImageView imageView;
+    public NetworkImageView imageView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        imageView1 = (NetworkImageView) imageView.findViewById(R.id.imageView1);
 
-        mAdapter = new BookAdapter(bookList);
+        mAdapter = new BookAdapter(bookList,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -39,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }));
+        imageView = (ImageView) findViewById(R.id.imageView);
+
         initBookData();
     }
 
@@ -59,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
         book = new Book("Android Apps Security", "Sheran Gunasekera");
         bookList.add(book);
 
+        book = new Book("Android Apps Security", "Sheran Gunasekera");
+        bookList.add(book);
+        book = new Book("Android Apps Security", "Sheran Gunasekera");
+        bookList.add(book);
+        book = new Book("Android Apps Security", "Sheran Gunasekera");
+        bookList.add(book);
+        book = new Book("Android Apps Security", "Sheran Gunasekera");
+        bookList.add(book);
+
        /*for(int i=1;i<10;i++){
            Book b=new Book();
            b.setAuthor("ram");
@@ -67,5 +86,12 @@ public class MainActivity extends AppCompatActivity {
        }*/
 
        // mAdapter.notifyDataSetChanged();
+    }
+
+
+
+
+    public void imagereq(){
+        //imageView1.setImageUrl();
     }
 }
